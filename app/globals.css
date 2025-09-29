@@ -1,26 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 @import "tailwindcss";
+@plugin "daisyui";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+[data-theme="andtheme"] {
+    --color-primary: #3D5B4B;
+    --color-secondary: #FFAA00;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+body{
+    @apply font-[poppins];
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.text-title{
+    @apply font-bold text-primary;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.text-gray{
+    @apply text-[#6D6D6D];
+}
+
+.card-title{
+    @apply text-primary;
+}
+
+.section{
+    @apply py-10 lg:py-20 flex flex-col gap-10;
+}
+
+.page-section{
+    @apply min-h-screen flex flex-col items-center justify-center gap-20 px-0 lg:px-40;
+}
+
+.card{
+    @apply bg-[#F4F4F4] shadow-sm shadow-primary/50;
+}
+
+.button-hover{
+    @apply transition duration-300 hover:scale-105 hover:shadow-lg will-change-transform cursor-pointer;
+}
+
+.navbar-item-hover{
+    @apply relative after:content-[''] after:absolute after:left-1/2 after:bottom-0 after:h-[2px] after:w-0 after:bg-primary after:transition-all after:duration-300 after:-translate-x-1/2 hover:after:w-full
+
+}
+
+.navbar-item-active{
+    @apply text-primary font-semibold relative after:content-[''] after:absolute after:bottom-0 after:h-[2px] after:w-full after:bg-primary transition-all duration-300 ease-in-out will-change-transform
 }
