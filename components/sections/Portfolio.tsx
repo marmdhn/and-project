@@ -1,6 +1,7 @@
 import Button from "../Button";
 import { FaExternalLinkAlt } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import Image from "next/image";
+import Link from "next/link";
 
 interface Portfolio {
   title: string;
@@ -39,7 +40,13 @@ export default function PortfolioSection() {
             key={index}
             className={`flex ${index % 2 === 0 ? "flex-row" : "flex-row-reverse"} justify-between items-center w-full`}
           >
-            <img src={item.img} alt="portfolio image" className="w-1/2" />
+            <Image
+              width={96}
+              height={96}
+              src={item.img}
+              alt="portfolio image"
+              className="w-1/2"
+            />
             <div
               className={`flex flex-col justify-center ${index % 2 === 0 ? "items-end" : "items-start"} gap-2 w-1/2`}
             >
@@ -53,7 +60,7 @@ export default function PortfolioSection() {
               </div>
               <h5 className="text-lg text-gray">{item.text}</h5>
               {item.redirect && (
-                <Link to={item.redirect}>
+                <Link href={item.redirect}>
                   <FaExternalLinkAlt className="text-gray cursor-pointer hover:text-primary" />
                 </Link>
               )}
