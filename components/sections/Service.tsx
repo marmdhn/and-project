@@ -8,6 +8,7 @@ import {
   fadeUp,
   fadeUpWhileInView,
 } from "@/utils/motionVariants";
+import Image from "next/image";
 
 interface Service {
   title: string;
@@ -71,7 +72,9 @@ export default function ServiceSection() {
               <h2 className="card-title mx-auto text-xl lg:text-2xl">
                 {item.title}
               </h2>
-              <img
+              <Image
+                width={96}
+                height={96}
                 className="w-50 h-50 mx-auto"
                 src={item.img}
                 alt="Illustration"
