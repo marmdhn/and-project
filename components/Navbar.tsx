@@ -91,7 +91,10 @@ export default function Navbar() {
       } px-10 lg:px-20`}
     >
       <div className="navbar-start w-full">
-        <button className="text-xl cursor-pointer me-auto lg:ms-0">
+        <button
+          onClick={() => handleNavigation("/")}
+          className="text-xl cursor-pointer me-auto lg:ms-0"
+        >
           <Image
             src="/logo.svg"
             width={96}
@@ -161,7 +164,7 @@ export default function Navbar() {
         variants={containerNavbarAnimate}
         initial="hidden"
         animate="visible"
-        className="navbar-end hidden lg:flex"
+        className="navbar-end hidden lg:flex lg:w-full"
       >
         <ul className="menu menu-horizontal px-1 mx-2 text-primary [&>li>*]:!bg-transparent [&>li>*]:!text-primary">
           {sections.map((item) => (
