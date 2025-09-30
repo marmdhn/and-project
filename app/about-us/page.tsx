@@ -5,6 +5,7 @@ import { FaPhone } from "react-icons/fa6";
 import { containerVariants, itemVariants } from "@/utils/motionVariants";
 import FormInput from "@/components/FormInput";
 import Button from "@/components/Button";
+import Image from "next/image";
 
 export default function AboutUsPage() {
   return (
@@ -61,7 +62,9 @@ export default function AboutUsPage() {
             <h1 className="text-title text-3xl lg:text-4xl block lg:hidden">
               👤 About Us
             </h1>
-            <img
+            <Image
+              width={96}
+              height={96}
               src="/illustration/about_us.svg"
               alt="about us"
               className="max-w-xs lg:max-w-sm w-full h-auto"
