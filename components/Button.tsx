@@ -25,7 +25,7 @@ export default function Button({
     >
       <button
         type="button"
-        className={`btn btn-primary font-medium rounded-full border-0 will-change-transform flex-1 ${forceText ? "inline" : "hidden sm:inline"}`}
+        className={`btn btn-primary font-medium !rounded-full border-0 will-change-transform flex-1 ${forceText ? "inline" : "hidden sm:inline"}`}
       >
         {text}
       </button>
