@@ -392,3 +392,43 @@ export const InvitationPackageData: InvitationPackage[] = [
     },
   },
 ];
+
+export const exclusiveInvitationPackage = {
+  exclusive: false,
+  title: "Exclusive",
+  themes: [],
+  content: [],
+  others: [],
+  adminAccess: {
+    status: true,
+    features: [
+      { text: "Lihat Rekap RSVP dan Ucapan", availableStatus: true },
+      { text: "Unduh Excel/PDF Hasil RSVP", availableStatus: true },
+      {
+        text: "Kelola Daftar Tamu Undangan (Unlimited)",
+        availableStatus: true,
+      },
+      { text: "Generate Link Undangan per Tamu", availableStatus: true },
+      {
+        text: "Unduh Excel/PDF Daftar Tamu & Link Undangan",
+        availableStatus: true,
+      },
+      { text: "Template/Custom Teks Pengantar Chat", availableStatus: true },
+      { text: "Kirim Otomatis Undangan ke WhatsApp", availableStatus: true },
+      {
+        text: "Lihat Daftar Hadir Tamu hasil Scan QR",
+        availableStatus: true,
+      },
+      { text: "Unduh Excel/PDF Hasil Scan QR", availableStatus: true },
+      { text: "Masa aktif 6 bulan", availableStatus: true },
+    ],
+  },
+  additionalInfo: {
+    webUrl: [
+      "Link berdasarkan nama tamu",
+      "Masa aktif 1 tahun",
+      "Custom domain website",
+    ],
+    notes: ["Custom informasi acara", "Dapat membagi sesi tamu undangan"],
+  },
+};
