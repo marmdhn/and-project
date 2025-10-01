@@ -36,7 +36,7 @@ export default function ServicesPage() {
   }, []);
 
   return (
-    <section id="service" className="page-section pt-30 lg:py-48">
+    <section id="service" className="page-section">
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -45,7 +45,7 @@ export default function ServicesPage() {
       >
         <motion.h1
           variants={itemVariants}
-          className="text-2xl lg:text-5xl text-primary font-bold"
+          className="text-2xl lg:text-5xl text-title"
         >
           🛠️ Services We Provide
         </motion.h1>
@@ -169,6 +169,7 @@ export default function ServicesPage() {
                                 height={96}
                                 src={portfolio.coverUrl}
                                 alt="cover"
+                                className="w-1/2 lg:w-full"
                               />
                             </figure>
                             <div className="card-body flex flex-col gap-0">
