@@ -36,7 +36,7 @@ export default function ServicesPage() {
   }, []);
 
   return (
-    <section id="service" className="page-section">
+    <section id="service" className="page-section gap-10 lg:gap-20">
       <motion.div
         variants={containerVariants}
         initial="hidden"
