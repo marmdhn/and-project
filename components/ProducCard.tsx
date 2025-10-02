@@ -9,7 +9,7 @@ export default function ProductCard() {
           width={96}
           height={96}
           className="w-full"
-          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+          src="/illustration/coming_soon.png"
           alt="Shoes"
         />
       </figure>
