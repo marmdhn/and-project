@@ -50,7 +50,7 @@ export default function Navbar() {
   };
 
   const handleNavigation = (to: string) => {
-    if (pathname !== "/" && to === "service") {
+    if (pathname !== "/" || to === "service") {
       setScrollTarget(to);
       router.push("/");
     } else {
@@ -65,7 +65,6 @@ export default function Navbar() {
         smooth: true,
         offset: -100,
       });
-      setScrollTarget(null);
     }
   }, [pathname, scrollTarget]);
 
@@ -180,7 +179,11 @@ export default function Navbar() {
                   duration={500}
                   spy
                   offset={-100}
-                  activeClass={pathname === "/" ? "navbar-item-active" : ""}
+                  activeClass={
+                    pathname === "/" && scrollTarget !== "/"
+                      ? "navbar-item-active"
+                      : ""
+                  }
                   onClick={() => handleNavigation(item.id)}
                   className="navbar-item-hover cursor-pointer"
                 >
