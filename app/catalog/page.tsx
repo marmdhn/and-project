@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { containerVariants, itemVariants } from "@/utils/motionVariants";
 import {
   exclusiveInvitationPackage,
+  invitationAddOns,
   InvitationPackageData,
 } from "@/data/invitationPackage";
 import { ListItem } from "@/app/catalog/ListItem";
@@ -252,59 +253,77 @@ export default function CatalogPage() {
           </div>
 
           {(!firstSelect || !secondSelect) && (
-            <div className="card w-2/5 bg-base-100 border-4 border-primary animate-glow">
-              <div className="card-body">
-                <div className="flex justify-between">
-                  <h2 className="text-3xl font-bold">
-                    {exclusiveInvitationPackage.title}
-                  </h2>
-                  <span className="badge badge-xs badge-warning animate-bounce">
-                    Recommended
-                  </span>
-                </div>
+            <div className="flex flex-col justify-center items-center gap-20 w-full">
+              <div className="card w-1/3 bg-base-100 border-4 border-primary animate-glow">
+                <div className="card-body">
+                  <div className="flex justify-between">
+                    <h2 className="text-3xl font-bold">
+                      {exclusiveInvitationPackage.title}
+                    </h2>
+                    <span className="badge badge-xs badge-warning animate-bounce">
+                      Recommended
+                    </span>
+                  </div>
 
-                <div>
-                  <h1 className="font-bold mb-2">Custom Desain</h1>
-                  <h1 className="font-bold">Custom Isi Undangan</h1>
-                </div>
+                  <div>
+                    <h1 className="font-bold mb-2">Custom Desain</h1>
+                    <h1 className="font-bold">Custom Isi Undangan</h1>
+                  </div>
 
-                <div>
-                  <h1 className={`font-bold mb-2`}>Admin Akses</h1>
-                  <ul className="flex flex-col gap-2 text-xs">
-                    {exclusiveInvitationPackage.adminAccess.features.map(
-                      (feature, index) => (
-                        <ListItem
-                          key={feature.text + index}
-                          text={feature.text}
-                        />
-                      ),
-                    )}
-                  </ul>
-                </div>
+                  <div>
+                    <h1 className={`font-bold mb-2`}>Admin Akses</h1>
+                    <ul className="flex flex-col gap-2 text-xs">
+                      {exclusiveInvitationPackage.adminAccess.features.map(
+                        (feature, index) => (
+                          <ListItem
+                            key={feature.text + index}
+                            text={feature.text}
+                          />
+                        ),
+                      )}
+                    </ul>
+                  </div>
 
-                <div>
-                  <h1 className="font-bold mb-2">Link Website</h1>
-                  <ul className="flex flex-col gap-2 text-xs">
-                    {exclusiveInvitationPackage.additionalInfo.webUrl.map(
-                      (webUrl, index) => (
-                        <ListItem key={webUrl + index} text={webUrl} />
-                      ),
-                    )}
-                  </ul>
-                </div>
+                  <div>
+                    <h1 className="font-bold mb-2">Link Website</h1>
+                    <ul className="flex flex-col gap-2 text-xs">
+                      {exclusiveInvitationPackage.additionalInfo.webUrl.map(
+                        (webUrl, index) => (
+                          <ListItem key={webUrl + index} text={webUrl} />
+                        ),
+                      )}
+                    </ul>
+                  </div>
 
-                <div>
-                  <h1 className="font-bold mb-2">Catatan(*)</h1>
-                  <ul className="flex flex-col gap-2 text-xs">
-                    {exclusiveInvitationPackage.additionalInfo.notes.map(
-                      (note, index) => (
-                        <ListItem key={note + index} text={note} />
-                      ),
-                    )}
-                  </ul>
+                  <div>
+                    <h1 className="font-bold mb-2">Catatan(*)</h1>
+                    <ul className="flex flex-col gap-2 text-xs">
+                      {exclusiveInvitationPackage.additionalInfo.notes.map(
+                        (note, index) => (
+                          <ListItem key={note + index} text={note} />
+                        ),
+                      )}
+                    </ul>
+                  </div>
+                  <div className="mt-6">
+                    <Button text="Contact Us" />
+                  </div>
                 </div>
-                <div className="mt-6">
-                  <Button text="Contact Us" />
+              </div>
+
+              <div className="w-full flex flex-col gap-4 items-center justify-center">
+                <h1 className="text-primary font-semibold text-xl">Add Ons</h1>
+                <div className="flex flex-col gap-2 w-full">
+                  {invitationAddOns.map((addOn, key) => (
+                    <div
+                      key={key}
+                      className="flex items-center justify-between"
+                    >
+                      <span>{addOn.name}</span>
+                      <span className="flex-1 mx-2 border-b border-dotted border-gray-400"></span>
+                      <span>Rp {addOn.price.toLocaleString()}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
