@@ -432,3 +432,9 @@ export const exclusiveInvitationPackage = {
     notes: ["Custom informasi acara", "Dapat membagi sesi tamu undangan"],
   },
 };
+
+export const invitationAddOns: { name: string; price: number }[] = [
+  { name: "Custom Font", price: 50000 },
+  { name: "Custom Warna", price: 75000 },
+  { name: "Custom Domain Website", price: 150000 },
+];
