@@ -1,10 +1,14 @@
 import Button from "@/components/Button";
+import Image from "next/image";
 
 export default function ProductCard() {
   return (
     <div className="card bg-base-100 w-96 shadow-sm">
       <figure>
-        <img
+        <Image
+          width={96}
+          height={96}
+          className="w-full"
           src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
           alt="Shoes"
         />
