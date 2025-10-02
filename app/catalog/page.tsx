@@ -7,10 +7,11 @@ import {
   invitationAddOns,
   InvitationPackageData,
 } from "@/data/invitationPackage";
-import { ListItem } from "@/app/catalog/ListItem";
+import { PackageListItem } from "@/components/PackageListItem";
 import { useRef, useState } from "react";
 import Button from "@/components/Button";
 import { FaUndo } from "react-icons/fa";
+import ProductCard from "@/components/ProducCard";
 
 export default function CatalogPage() {
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -28,9 +29,7 @@ export default function CatalogPage() {
     const scrollLeft = container.scrollLeft;
     const maxScrollLeft = container.scrollWidth - container.clientWidth;
 
-    // kalau scrollLeft > 0 artinya bisa scroll ke kiri
     setCanScrollPrev(scrollLeft > 0);
-    // kalau belum nyampe max scroll, masih bisa scroll ke kanan
     setCanScrollNext(scrollLeft < maxScrollLeft);
   };
 
@@ -171,82 +170,38 @@ export default function CatalogPage() {
                     <h2 className="text-3xl font-bold">{item.title}</h2>
                   </div>
 
-                  <div>
-                    <h1 className="font-bold mb-2">Tema Desain</h1>
-                    <ul className="flex flex-col gap-2 text-xs">
-                      {item.themes.map((theme, index) => (
-                        <ListItem
-                          key={theme.text + index}
-                          text={theme.text}
-                          availableStatus={theme.availableStatus}
-                        />
-                      ))}
-                    </ul>
-                  </div>
+                  <PackageListItem
+                    title={{ text: "Tema Desain", availableStatus: true }}
+                    items={item.themes}
+                  />
 
-                  <div>
-                    <h1 className="font-bold mb-2">Isi Undangan</h1>
-                    <ul className="flex flex-col gap-2 text-xs">
-                      {item.content.map((content, index) => (
-                        <ListItem
-                          key={content.text + index}
-                          text={content.text}
-                          availableStatus={content.availableStatus}
-                        >
-                          {content.children?.map((child, childIndex) => (
-                            <ListItem
-                              key={child.text + childIndex}
-                              text={child.text}
-                              availableStatus={child.availableStatus}
-                            />
-                          ))}
-                        </ListItem>
-                      ))}
-                    </ul>
-                  </div>
+                  <PackageListItem
+                    title={{ text: "Isi Undangan", availableStatus: true }}
+                    items={item.content}
+                  />
 
-                  <div>
-                    <h1 className="font-bold mb-2">Lainnya</h1>
-                    <ul className="flex flex-col gap-2 text-xs">
-                      {item.others.map((other, index) => (
-                        <ListItem key={other + index} text={other} />
-                      ))}
-                    </ul>
-                  </div>
+                  <PackageListItem
+                    title={{ text: "Lainnya", availableStatus: true }}
+                    items={item.others}
+                  />
 
-                  <div>
-                    <h1
-                      className={`font-bold mb-2 ${item.adminAccess.status ? "" : "line-through"}`}
-                    >
-                      Admin Akses
-                    </h1>
-                    <ul className="flex flex-col gap-2 text-xs">
-                      {item.adminAccess.features.map((feature, index) => (
-                        <ListItem
-                          key={feature.text + index}
-                          text={feature.text}
-                        />
-                      ))}
-                    </ul>
-                  </div>
+                  <PackageListItem
+                    title={{
+                      text: "Admin Akses",
+                      availableStatus: item.adminAccess.status,
+                    }}
+                    items={item.adminAccess.features}
+                  />
 
-                  <div>
-                    <h1 className="font-bold mb-2">Link Website</h1>
-                    <ul className="flex flex-col gap-2 text-xs">
-                      {item.additionalInfo.webUrl.map((webUrl, index) => (
-                        <ListItem key={webUrl + index} text={webUrl} />
-                      ))}
-                    </ul>
-                  </div>
+                  <PackageListItem
+                    title={{ text: "Link Website", availableStatus: true }}
+                    items={item.additionalInfo.webUrl}
+                  />
 
-                  <div>
-                    <h1 className="font-bold mb-2">Catatan(*)</h1>
-                    <ul className="flex flex-col gap-2 text-xs">
-                      {item.additionalInfo.notes.map((note, index) => (
-                        <ListItem key={note + index} text={note} />
-                      ))}
-                    </ul>
-                  </div>
+                  <PackageListItem
+                    title={{ text: "Catatan(*)", availableStatus: true }}
+                    items={item.additionalInfo.notes}
+                  />
                 </div>
               </div>
             ))}
@@ -270,41 +225,21 @@ export default function CatalogPage() {
                     <h1 className="font-bold">Custom Isi Undangan</h1>
                   </div>
 
-                  <div>
-                    <h1 className={`font-bold mb-2`}>Admin Akses</h1>
-                    <ul className="flex flex-col gap-2 text-xs">
-                      {exclusiveInvitationPackage.adminAccess.features.map(
-                        (feature, index) => (
-                          <ListItem
-                            key={feature.text + index}
-                            text={feature.text}
-                          />
-                        ),
-                      )}
-                    </ul>
-                  </div>
+                  <PackageListItem
+                    title={{ text: "Admin Akses", availableStatus: true }}
+                    items={exclusiveInvitationPackage.adminAccess.features}
+                  />
 
-                  <div>
-                    <h1 className="font-bold mb-2">Link Website</h1>
-                    <ul className="flex flex-col gap-2 text-xs">
-                      {exclusiveInvitationPackage.additionalInfo.webUrl.map(
-                        (webUrl, index) => (
-                          <ListItem key={webUrl + index} text={webUrl} />
-                        ),
-                      )}
-                    </ul>
-                  </div>
+                  <PackageListItem
+                    title={{ text: "Link Website", availableStatus: true }}
+                    items={exclusiveInvitationPackage.additionalInfo.webUrl}
+                  />
 
-                  <div>
-                    <h1 className="font-bold mb-2">Catatan(*)</h1>
-                    <ul className="flex flex-col gap-2 text-xs">
-                      {exclusiveInvitationPackage.additionalInfo.notes.map(
-                        (note, index) => (
-                          <ListItem key={note + index} text={note} />
-                        ),
-                      )}
-                    </ul>
-                  </div>
+                  <PackageListItem
+                    title={{ text: "Catatan(*)", availableStatus: true }}
+                    items={exclusiveInvitationPackage.additionalInfo.notes}
+                  />
+
                   <div className="mt-6">
                     <Button text="Contact Us" />
                   </div>
@@ -330,6 +265,7 @@ export default function CatalogPage() {
           )}
         </div>
       </div>
+      <ProductCard />
     </section>
   );
 }
