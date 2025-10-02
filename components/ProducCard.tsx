@@ -6,8 +6,8 @@ export default function ProductCard() {
     <div className="card bg-base-100 w-96 shadow-sm">
       <figure>
         <Image
-          width={96}
-          height={96}
+          width={400}
+          height={400}
           className="w-full"
           src="/illustration/coming_soon.png"
           alt="Shoes"
