@@ -18,20 +18,19 @@ export default function CatalogPage() {
   const [firstSelect, setFirstSelect] = useState("");
   const [secondSelect, setSecondSelect] = useState("");
 
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(true);
+
   const handleScroll = () => {
     if (!carouselRef.current) return;
-    const scrollLeft = carouselRef.current.scrollLeft;
-    const width = carouselRef.current.clientWidth;
-    const maxScrollLeft =
-      carouselRef.current.scrollWidth - carouselRef.current.clientWidth;
+    const container = carouselRef.current;
+    const scrollLeft = container.scrollLeft;
+    const maxScrollLeft = container.scrollWidth - container.clientWidth;
 
-    if (scrollLeft < width * 0.25) {
-      setActiveIndex(0);
-    } else if (scrollLeft > maxScrollLeft - width * 0.25) {
-      setActiveIndex(2);
-    } else {
-      setActiveIndex(1);
-    }
+    // kalau scrollLeft > 0 artinya bisa scroll ke kiri
+    setCanScrollPrev(scrollLeft > 0);
+    // kalau belum nyampe max scroll, masih bisa scroll ke kanan
+    setCanScrollNext(scrollLeft < maxScrollLeft);
   };
 
   const scrollToIndex = (bulletIndex: number) => {
@@ -132,16 +131,21 @@ export default function CatalogPage() {
 
       <div className="flex flex-col">
         {(!firstSelect || !secondSelect) && (
-          <div className="flex justify-center gap-2">
-            {[0, 1, 2].map((index) => (
-              <button
-                key={index}
-                onClick={() => scrollToIndex(index)}
-                className={`w-3 h-3 rounded-full ${
-                  activeIndex === index ? "bg-primary" : "bg-gray-300"
-                }`}
-              />
-            ))}
+          <div className="flex justify-center items-center gap-6 my-4">
+            <button
+              className="btn btn-circle btn-outline"
+              onClick={() => scrollToIndex(activeIndex - 1)}
+              disabled={!canScrollPrev}
+            >
+              ❮
+            </button>
+            <button
+              className="btn btn-circle btn-outline"
+              onClick={() => scrollToIndex(activeIndex + 1)}
+              disabled={!canScrollNext}
+            >
+              ❯
+            </button>
           </div>
         )}
 
