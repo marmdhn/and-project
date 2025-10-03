@@ -2,10 +2,10 @@
 
 import { motion } from "framer-motion";
 import { containerVariants, itemVariants } from "@/utils/motionVariants";
-import ProductCard from "@/components/ProducCard";
-import { productList } from "@/data/productList";
 import InvitationPackage from "@/app/catalog/InvitationPackage";
 import { useState } from "react";
+import ProductList from "@/app/catalog/productList";
+import { productList } from "@/data/productList";
 
 export default function CatalogPage() {
   const [activeFilter, setActiveFilter] = useState("All");
@@ -63,7 +63,7 @@ export default function CatalogPage() {
             className={`px-4 py-2 rounded-md cursor-pointer transition-all duration-200 ${
               activeFilter === filter
                 ? "bg-secondary text-white border border-secondary"
-                : "text-gray border border-gray-300 hover:bg-secondary hover:text-white"
+                : "text-gray border border-gray-300 hover:bg-secondary hover:!text-white"
             }`}
           >
             {filter}
@@ -99,15 +99,7 @@ export default function CatalogPage() {
         </div>
       )}
 
-      <div className="card">
-        <div className="card-body">
-          <div className="grid grid-cols-3 gap-8">
-            {productList.map((product, key) => (
-              <ProductCard key={key} product={product} />
-            ))}
-          </div>
-        </div>
-      </div>
+      <ProductList product={productList} />
     </section>
   );
 }
