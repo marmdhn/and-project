@@ -12,6 +12,7 @@ import { useRef, useState } from "react";
 import Button from "@/components/Button";
 import { FaUndo } from "react-icons/fa";
 import ProductCard from "@/components/ProducCard";
+import { productList } from "@/data/productList";
 
 export default function CatalogPage() {
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -91,47 +92,11 @@ export default function CatalogPage() {
         />
       </motion.div>
 
-      <div className="flex flex-col lg:flex-row items-center justify-center gap-4 mt-6">
-        <span>Bandingkan</span>
-        <select
-          value={firstSelect}
-          onChange={(e) => setFirstSelect(e.target.value)}
-          className="select select-bordered w-60"
-        >
-          <option value="">Pilih Paket Pertama</option>
-          {InvitationPackageData.map((item) => (
-            <option key={item.title} value={item.title}>
-              {item.title}
-            </option>
-          ))}
-        </select>
-
-        <span>dengan</span>
-
-        <select
-          value={secondSelect}
-          onChange={(e) => setSecondSelect(e.target.value)}
-          className="select select-bordered w-60"
-        >
-          <option value="">Pilih Paket Kedua</option>
-          {InvitationPackageData.map((item) => (
-            <option key={item.title} value={item.title}>
-              {item.title}
-            </option>
-          ))}
-        </select>
-
-        <button
-          className="btn btn-secondary rounded-2xl"
-          onClick={resetSelectValue}
-        >
-          <FaUndo size={15} /> Reset
-        </button>
-      </div>
-
       <div className="flex flex-col">
-        {(!firstSelect || !secondSelect) && (
-          <div className="flex justify-center items-center gap-6 my-4">
+        <div
+          className={`flex justify-${!firstSelect || !secondSelect ? "between" : "center"} items-center my-4`}
+        >
+          {(!firstSelect || !secondSelect) && (
             <button
               className="btn btn-circle btn-outline"
               onClick={() => scrollToIndex(activeIndex - 1)}
@@ -139,6 +104,47 @@ export default function CatalogPage() {
             >
               ❮
             </button>
+          )}
+
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-4">
+            <span>Bandingkan</span>
+            <select
+              value={firstSelect}
+              onChange={(e) => setFirstSelect(e.target.value)}
+              className="select select-bordered w-60"
+            >
+              <option value="">Pilih Paket Pertama</option>
+              {InvitationPackageData.map((item) => (
+                <option key={item.title} value={item.title}>
+                  {item.title}
+                </option>
+              ))}
+            </select>
+
+            <span>dengan</span>
+
+            <select
+              value={secondSelect}
+              onChange={(e) => setSecondSelect(e.target.value)}
+              className="select select-bordered w-60"
+            >
+              <option value="">Pilih Paket Kedua</option>
+              {InvitationPackageData.map((item) => (
+                <option key={item.title} value={item.title}>
+                  {item.title}
+                </option>
+              ))}
+            </select>
+
+            <button
+              className="btn btn-secondary rounded-2xl"
+              onClick={resetSelectValue}
+            >
+              <FaUndo size={15} /> Reset
+            </button>
+          </div>
+
+          {(!firstSelect || !secondSelect) && (
             <button
               className="btn btn-circle btn-outline"
               onClick={() => scrollToIndex(activeIndex + 1)}
@@ -146,8 +152,8 @@ export default function CatalogPage() {
             >
               ❯
             </button>
-          </div>
-        )}
+          )}
+        </div>
 
         <div className="flex flex-col items-center justify-center">
           <div
@@ -208,8 +214,8 @@ export default function CatalogPage() {
           </div>
 
           {(!firstSelect || !secondSelect) && (
-            <div className="flex flex-col justify-center items-center gap-20 w-full">
-              <div className="card w-1/3 bg-base-100 border-4 border-primary animate-glow">
+            <div className="flex justify-center items-center gap-20 w-full">
+              <div className="card w-1/3 bg-base-100 border-4 border-primary">
                 <div className="card-body">
                   <div className="flex justify-between">
                     <h2 className="text-3xl font-bold">
@@ -246,7 +252,7 @@ export default function CatalogPage() {
                 </div>
               </div>
 
-              <div className="w-full flex flex-col gap-4 items-center justify-center">
+              <div className="w-1/3 flex flex-col gap-4 items-center justify-center">
                 <h1 className="text-primary font-semibold text-xl">Add Ons</h1>
                 <div className="flex flex-col gap-2 w-full">
                   {invitationAddOns.map((addOn, key) => (
@@ -265,7 +271,10 @@ export default function CatalogPage() {
           )}
         </div>
       </div>
-      <ProductCard />
+
+      {productList.map((product, key) => (
+        <ProductCard key={key} product={product} />
+      ))}
     </section>
   );
 }
