@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { FaPhone } from "react-icons/fa6";
 import { containerVariants, itemVariants } from "@/utils/motionVariants";
-import FormInput from "@/components/FormInput";
+import InputField from "@/components/InputField";
 import Button from "@/components/Button";
 import Image from "next/image";
 
@@ -81,9 +81,9 @@ export default function AboutUsPage() {
               </div>
 
               <fieldset className="fieldset w-full lg:w-2/3 gap-5">
-                <FormInput label="Name" type="text" placeholder="Name" />
-                <FormInput label="Email" type="email" placeholder="Email" />
-                <FormInput
+                <InputField label="Name" type="text" placeholder="Name" />
+                <InputField label="Email" type="email" placeholder="Email" />
+                <InputField
                   label="Your Message"
                   as="textarea"
                   placeholder="Your Message"
