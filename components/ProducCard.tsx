@@ -1,9 +1,9 @@
 import Button from "@/components/Button";
 import Image from "next/image";
-import type { ProductCard } from "@/data/productList";
+import type { IProductList } from "@/data/productList";
 
 interface ProductCardProps {
-  product: ProductCard;
+  product: IProductList;
 }
 export default function ProductCard({ product }: ProductCardProps) {
   return (
