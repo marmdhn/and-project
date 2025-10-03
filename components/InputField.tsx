@@ -1,7 +1,7 @@
 import React from "react";
 
-type FormInputProps = {
-  label: string;
+type InputFieldProps = {
+  label?: string;
   type?: string;
   as?: "input" | "textarea";
   rows?: number;
@@ -12,7 +12,7 @@ type FormInputProps = {
   ) => void;
 };
 
-export default function FormInput({
+export default function InputField({
   label,
   type = "text",
   as = "input",
@@ -20,10 +20,10 @@ export default function FormInput({
   placeholder,
   value,
   onChange,
-}: FormInputProps) {
+}: InputFieldProps) {
   return (
     <div className="flex flex-col gap-1">
-      <label className="label font-medium">{label}</label>
+      {label && <label className="label font-medium">{label}</label>}
       {as === "textarea" ? (
         <textarea
           className="textarea w-full"
