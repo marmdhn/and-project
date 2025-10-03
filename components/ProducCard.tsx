@@ -1,32 +1,62 @@
 import Button from "@/components/Button";
 import Image from "next/image";
+import type { ProductCard } from "@/data/productList";
 
-export default function ProductCard() {
+interface ProductCardProps {
+  product: ProductCard;
+}
+export default function ProductCard({ product }: ProductCardProps) {
   return (
     <div className="card bg-base-100 w-96 shadow-sm">
-      <figure>
-        <Image
-          width={400}
-          height={400}
-          className="w-full"
-          src="/illustration/coming_soon.png"
-          alt="Shoes"
-        />
+      <div className="flex justify-between items-center m-2">
+        {product.isNew && <div className="badge badge-secondary">NEW</div>}
+        <div className="badge badge-outline">{product.theme}</div>
+      </div>
+      <figure className="p-2 hover-gallery">
+        {product.image.map((img, index) => (
+          <Image
+            key={index}
+            width={400}
+            height={400}
+            className="w-96 h-96 mx-auto rounded-xl object-cover"
+            src={img}
+            alt={img.replace(".png", "")}
+          />
+        ))}
       </figure>
       <div className="card-body">
-        <h2 className="card-title">
-          Card Title
-          <div className="badge badge-secondary">NEW</div>
-          <div className="badge badge-outline">Fashion</div>
-          <div className="badge badge-outline">Products</div>
-        </h2>
-        <p>
-          A card component has a figure, a body part, and inside body there are
-          title and actions parts
-        </p>
-        <div className="card-actions justify-between items-center">
-          <span className="text-xl">Rp {(15000).toLocaleString()}</span>
-          <Button text="Buy Now" />
+        <div className="flex justify-between items-center">
+          <h2 className="card-title">
+            {product.productTemplate} | {product.productPackage}
+          </h2>
+          <div>
+            <span
+              className={`text-sm ${product.discount && "line-through"} text-error`}
+            >
+              Rp {product.price.toLocaleString()}
+            </span>
+            {product.discount && (
+              <span className="ms-2 text-lg font-semibold text-gray">
+                Rp {(product.price - product.discount).toLocaleString()}
+              </span>
+            )}
+          </div>
+        </div>
+        <div className="card-actions justify-center items-center">
+          <button className="px-3 py-1 bg-primary text-white rounded-xl transition-colors hover:bg-primary/80">
+            Preview
+          </button>
+          <div
+            className={!product.portfolio ? "tooltip" : ""}
+            data-tip="Belum Ada Portfolio"
+          >
+            <Button
+              disabled={!product.portfolio}
+              text="Portfolio"
+              type="link"
+              style="underline"
+            />
+          </div>
         </div>
       </div>
     </div>
