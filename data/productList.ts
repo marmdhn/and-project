@@ -1,4 +1,4 @@
-export interface ProductCard {
+export interface IProductList {
   productId: number;
   isNew: boolean;
   theme: string;
@@ -10,7 +10,7 @@ export interface ProductCard {
   portfolio: boolean;
 }
 
-export const productList: ProductCard[] = [
+export const productList: IProductList[] = [
   {
     productId: 1,
     isNew: true,
