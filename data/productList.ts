@@ -7,6 +7,7 @@ export interface IProductList {
   productPackage: string;
   price: number;
   discount?: number;
+  category: string;
   portfolio: boolean;
 }
 
@@ -25,6 +26,7 @@ export const productList: IProductList[] = [
     productPackage: "Standart A",
     price: 100000,
     discount: 5000,
+    category: "invitation website",
     portfolio: false,
   },
   {
@@ -41,6 +43,7 @@ export const productList: IProductList[] = [
     productPackage: "Standart A",
     price: 100000,
     discount: 5000,
+    category: "invitation website",
     portfolio: false,
   },
   {
@@ -57,6 +60,7 @@ export const productList: IProductList[] = [
     productPackage: "Standart A",
     price: 100000,
     discount: 5000,
+    category: "invitation website",
     portfolio: false,
   },
 ];
