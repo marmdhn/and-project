@@ -99,7 +99,12 @@ export default function CatalogPage() {
         </div>
       )}
 
-      <ProductList product={productList} />
+      <ProductList
+        product={productList.filter(
+          (product) =>
+            product.category.toLowerCase() === activeFilter.toLowerCase(),
+        )}
+      />
     </section>
   );
 }
