@@ -18,10 +18,8 @@ export default function ProductCard({ product }: ProductCardProps) {
       </div>
       <figure className="hover-gallery">
         {product.image.map((img, index) => (
-          <Image
+          <img
             key={index}
-            width={400}
-            height={400}
             className="w-96 h-96 mx-auto rounded-xl"
             src={img}
             alt={img.replace(".png", "")}
