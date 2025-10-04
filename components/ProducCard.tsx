@@ -1,6 +1,6 @@
 import Button from "@/components/Button";
-import Image from "next/image";
 import type { IProductList } from "@/data/productList";
+import HoverGallery from "@/components/HoverGallery";
 
 interface ProductCardProps {
   product: IProductList;
@@ -16,24 +16,8 @@ export default function ProductCard({ product }: ProductCardProps) {
           </div>
         )}
       </div>
-      {/*<figure className="hover-gallery">*/}
-      {/*  {product.image.map((img, index) => (*/}
-      {/*    <Image*/}
-      {/*      key={index}*/}
-      {/*      width={400}*/}
-      {/*      height={400}*/}
-      {/*      className="w-96 h-96 mx-auto rounded-xl"*/}
-      {/*      src={img}*/}
-      {/*      alt={img.replace(".png", "")}*/}
-      {/*    />*/}
-      {/*  ))}*/}
-      {/*</figure>*/}
-
-      <figure className="hover-gallery max-w-60">
-        <img src="https://img.daisyui.com/images/stock/daisyui-hat-1.webp" />
-        <img src="https://img.daisyui.com/images/stock/daisyui-hat-2.webp" />
-        <img src="https://img.daisyui.com/images/stock/daisyui-hat-3.webp" />
-        <img src="https://img.daisyui.com/images/stock/daisyui-hat-4.webp" />
+      <figure className="p-2">
+        <HoverGallery images={product.image} />
       </figure>
       <div className="card-body">
         <h2 className="card-title">
