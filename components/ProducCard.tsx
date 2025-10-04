@@ -1,5 +1,4 @@
 import Button from "@/components/Button";
-import Image from "next/image";
 import type { IProductList } from "@/data/productList";
 
 interface ProductCardProps {
