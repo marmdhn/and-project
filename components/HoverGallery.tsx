@@ -12,7 +12,7 @@ export default function HoverGallery({ images }: HoverGalleryProps) {
 
   return (
     <div
-      className="relative w-96 h-96 mx-auto rounded-xl overflow-hidden group"
+      className="relative w-96 aspect-square mx-auto rounded-xl overflow-hidden group"
       onMouseLeave={() => setActiveIndex(0)}
     >
       <Image
@@ -20,7 +20,7 @@ export default function HoverGallery({ images }: HoverGalleryProps) {
         alt={`product-image-${activeIndex}`}
         width={400}
         height={400}
-        className="w-full h-full object-cover transition-all duration-300"
+        className="w-full object-cover transition-all duration-300"
       />
 
       <div
