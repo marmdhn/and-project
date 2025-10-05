@@ -5,27 +5,15 @@ import { containerVariants, itemVariants } from "@/utils/motionVariants";
 import InvitationPackage from "@/app/catalog/InvitationPackage";
 import { useState } from "react";
 import ProductList from "@/app/catalog/productList";
-import { productList } from "@/data/productList";
+import { productCategoryWithFilters, productData } from "@/data/productData";
 
 export default function CatalogPage() {
   const [activeFilter, setActiveFilter] = useState("All");
   const [activeInfo, setActiveInfo] = useState<string | null>(null);
 
-  const filters = [
-    "All",
-    "Catalog Website",
-    "Portfolio Website",
-    "Invitation Website",
-    "Branding Kit Design",
-    "Presentation Slide Design",
-    "Invitation Design Design",
-    "Catalog Design Design",
-  ];
-
   const availableInfo: Record<string, boolean> = {
     "Invitation Website": true,
   };
-
   const isInfoAvailable = availableInfo[activeFilter];
 
   const handleFilterClick = (filter: string) => {
@@ -33,8 +21,21 @@ export default function CatalogPage() {
     setActiveFilter(filter);
   };
 
+  const filteredProducts =
+    activeFilter === "All"
+      ? productData
+      : productData.filter(
+          (product) =>
+            product.category.toLowerCase() === activeFilter.toLowerCase(),
+        );
+
+  const activeCategoryFilter = productCategoryWithFilters.find(
+    (item) => item.category === activeFilter,
+  )?.filter;
+
   return (
     <section id="catalog-title" className="page-section gap-5 lg:gap-10">
+      {/* Header */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -55,18 +56,19 @@ export default function CatalogPage() {
         />
       </motion.div>
 
+      {/* Kategori */}
       <div className="flex flex-wrap justify-center gap-4">
-        {filters.map((filter) => (
+        {productCategoryWithFilters.map((filter) => (
           <div
-            key={filter}
-            onClick={() => handleFilterClick(filter)}
+            key={filter.category}
+            onClick={() => handleFilterClick(filter.category)}
             className={`px-4 py-2 rounded-md cursor-pointer transition-all duration-200 ${
-              activeFilter === filter
+              activeFilter === filter.category
                 ? "bg-secondary text-white border border-secondary"
                 : "text-gray border border-gray-300 hover:bg-secondary hover:!text-white"
             }`}
           >
-            {filter}
+            {filter.category}
           </div>
         ))}
       </div>
@@ -82,29 +84,19 @@ export default function CatalogPage() {
               prev === activeFilter ? null : activeFilter,
             )
           }
-          className={`px-4 py-2 text-gray rounded-md transition-all duration-200 border 
-    ${
-      !isInfoAvailable
-        ? "cursor-not-allowed bg-gray-200 text-gray-500 border-gray-300"
-        : "cursor-pointer border-gray-300 hover:bg-secondary hover:text-white hover:border-secondary"
-    }`}
+          className={`px-4 py-2 text-gray rounded-md transition-all duration-200 border ${
+            !isInfoAvailable
+              ? "cursor-not-allowed bg-gray-200 text-gray-500 border-gray-300"
+              : "cursor-pointer border-gray-300 hover:bg-secondary hover:text-white hover:border-secondary"
+          }`}
         >
           Info Fitur & Add Ons
         </button>
       </div>
 
-      {activeInfo && (
-        <div>
-          {activeInfo === "Invitation Website" && <InvitationPackage />}
-        </div>
-      )}
+      {activeInfo === "Invitation Website" && <InvitationPackage />}
 
-      <ProductList
-        product={productList.filter(
-          (product) =>
-            product.category.toLowerCase() === activeFilter.toLowerCase(),
-        )}
-      />
+      <ProductList product={filteredProducts} filter={activeCategoryFilter} />
     </section>
   );
 }
