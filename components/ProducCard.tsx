@@ -1,5 +1,5 @@
 import Button from "@/components/Button";
-import type { IProductList } from "@/data/productList";
+import type { IProductList } from "@/data/productData";
 import HoverGallery from "@/components/HoverGallery";
 
 interface ProductCardProps {
@@ -7,7 +7,7 @@ interface ProductCardProps {
 }
 export default function ProductCard({ product }: ProductCardProps) {
   return (
-    <div className="card bg-base-100 w-96 shadow-sm">
+    <div className="card bg-base-100 shadow-sm">
       <div className="flex justify-between items-center m-2">
         <div className="badge badge-outline text-gray">{product.theme}</div>
         {product.isNew && (
