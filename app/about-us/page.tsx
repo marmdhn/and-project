@@ -72,7 +72,12 @@ export default function AboutUsPage() {
           </motion.div>
         </div>
 
-        <div className="card w-full mt-16">
+        <motion.div
+          className="card w-full mt-16"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3, ease: "easeInOut", delay: 0.8 }}
+        >
           <div className="card-body px-4 lg:px-10">
             <div className="flex flex-col lg:flex-row justify-center items-start lg:items-center gap-10 lg:gap-16">
               <div className="w-full lg:w-1/3 text-title text-3xl lg:text-5xl flex items-center gap-3">
@@ -92,7 +97,7 @@ export default function AboutUsPage() {
               </fieldset>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
