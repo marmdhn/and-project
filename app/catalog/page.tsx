@@ -34,13 +34,13 @@ export default function CatalogPage() {
   )?.filter;
 
   return (
-    <section id="catalog-title" className="page-section gap-5 lg:gap-10">
+    <section id="catalog-title" className="page-section gap-5 lg:gap-12">
       {/* Header */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="flex flex-col items-center justify-center gap-5"
+        className="flex flex-col items-center justify-center gap-5 mb-10"
       >
         <motion.h1
           variants={itemVariants}
