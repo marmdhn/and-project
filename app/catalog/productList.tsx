@@ -19,8 +19,8 @@ export default function ProductList({ product, filter }: ProductCardProps) {
       ? product.filter((item) => String(item[filter.binding]) === activeFilter)
       : product;
   return (
-    <div className="card w-full">
-      <div className="card-body flex flex-col gap-5">
+    <div className="w-full">
+      <div className="flex flex-col gap-5">
         {filter?.data && filter.data.length > 0 && (
           <form className="filter">
             <input
@@ -50,7 +50,10 @@ export default function ProductList({ product, filter }: ProductCardProps) {
           {filteredProducts.length > 0 ? (
             filteredProducts.map((product, key) => (
               <motion.div key={key} variants={itemVariants}>
-                <ProductCard product={product} />
+                <ProductCard
+                  product={product}
+                  previewDirectUrl={"catalog/preview"}
+                />
               </motion.div>
             ))
           ) : (
