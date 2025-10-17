@@ -1,11 +1,16 @@
 import Button from "@/components/Button";
 import type { IProductList } from "@/data/productData";
 import HoverGallery from "@/components/HoverGallery";
+import Link from "next/link";
 
 interface ProductCardProps {
+  previewDirectUrl?: string;
   product: IProductList;
 }
-export default function ProductCard({ product }: ProductCardProps) {
+export default function ProductCard({
+  product,
+  previewDirectUrl,
+}: ProductCardProps) {
   return (
     <div className="card bg-base-100 shadow-sm">
       <div className="flex justify-between items-center m-2">
@@ -36,9 +41,11 @@ export default function ProductCard({ product }: ProductCardProps) {
           )}
         </div>
         <div className="card-actions justify-between items-center">
-          <button className="px-3 py-1 bg-primary text-white rounded-xl transition-colors hover:bg-primary/80">
-            Preview
-          </button>
+          <Link href={previewDirectUrl || ""}>
+            <button className="px-3 py-1 bg-primary text-white rounded-xl transition-colors hover:bg-primary/80">
+              Preview
+            </button>
+          </Link>
           <div
             className={!product.portfolio ? "tooltip" : ""}
             data-tip="Belum Ada Portfolio"
