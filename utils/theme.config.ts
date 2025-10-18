@@ -1,5 +1,5 @@
 export const themeMap: Record<string, string> = {
-  "/preview-product/premium-b-em-1": "premiumB",
+  "/preview/invitation/premium-b-em-1": "premiumB",
   "/": "andtheme",
 };
 
