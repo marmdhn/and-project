@@ -1,10 +1,10 @@
 "use client";
 
-import { IProductList } from "@/data/productData";
 import ProductCard from "@/components/ProducCard";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { containerVariants, itemVariants } from "@/utils/motionVariants";
+import { IProductList } from "@/types/product";
 
 interface ProductCardProps {
   product: IProductList[];
@@ -52,7 +52,7 @@ export default function ProductList({ product, filter }: ProductCardProps) {
               <motion.div key={key} variants={itemVariants}>
                 <ProductCard
                   product={product}
-                  previewDirectUrl={"catalog/preview"}
+                  previewDirectUrl={`/preview-product/${product.productSlug}`}
                 />
               </motion.div>
             ))

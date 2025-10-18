@@ -2,9 +2,9 @@
 
 import { motion } from "framer-motion";
 import { containerVariants, itemVariants } from "@/utils/motionVariants";
-import InvitationPackage from "@/app/catalog/InvitationPackage";
+import InvitationPackage from "@/app/(main)/catalog/InvitationPackage";
 import { useState } from "react";
-import ProductList from "@/app/catalog/productList";
+import ProductList from "@/app/(main)/catalog/productList";
 import { productCategoryWithFilters, productData } from "@/data/productData";
 
 export default function CatalogPage() {
