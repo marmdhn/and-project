@@ -52,7 +52,7 @@ export default function ProductList({ product, filter }: ProductCardProps) {
               <motion.div key={key} variants={itemVariants}>
                 <ProductCard
                   product={product}
-                  previewDirectUrl={`/preview-product/${product.productSlug}`}
+                  previewDirectUrl={`/preview/${product.category}/${product.productSlug}`}
                 />
               </motion.div>
             ))
