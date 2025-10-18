@@ -1,5 +1,4 @@
 import { FaEnvelope, FaQrcode } from "react-icons/fa6";
-import Image from "next/image";
 
 export default function PreviewCatalogPremiumBPage() {
   return (
