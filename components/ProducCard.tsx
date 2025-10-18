@@ -1,7 +1,7 @@
 import Button from "@/components/Button";
-import type { IProductList } from "@/data/productData";
 import HoverGallery from "@/components/HoverGallery";
 import Link from "next/link";
+import { IProductList } from "@/types/product";
 
 interface ProductCardProps {
   previewDirectUrl?: string;
