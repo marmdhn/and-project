@@ -1,21 +1,25 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import ClientLayout from "@/components/ClientLayout";
+import { headers } from "next/headers";
+import { ThemeHandler } from "@/components/ThemeHandler";
 
 export const metadata: Metadata = {
   title: "AND Project",
   description: "AND Project build for you from our heart",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
+  const headerList = await headers();
+  const theme = headerList.get("x-theme") ?? "andtheme";
+
   return (
-    <html lang="en" data-theme="andtheme" suppressHydrationWarning>
-      <body className={`antialiased`} suppressHydrationWarning>
-        <ClientLayout>{children}</ClientLayout>
+    <html lang="en" data-theme={theme} suppressHydrationWarning>
+      <body className="antialiased" suppressHydrationWarning>
+        <ThemeHandler>{children}</ThemeHandler>
       </body>
     </html>
   );
