@@ -5,10 +5,12 @@ export const metadata: Metadata = {
   description: "Main section of AND Project",
 };
 
-export default function PreviewCatalogPremiumBLayout({
+export default function InvitationLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return <div className="min-h-screen antialiased">{children}</div>;
+  return (
+    <div className="bg-[#EBE1CB] min-h-screen antialiased">{children}</div>
+  );
 }
