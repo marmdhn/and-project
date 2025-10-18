@@ -8,6 +8,11 @@
     --color-secondary: #FFAA00;
 }
 
+[data-theme="premiumB"] {
+    --color-primary: #290F00;
+    --color-secondary: #ECE9E5;
+}
+
 body{
     @apply font-[poppins];
 }
