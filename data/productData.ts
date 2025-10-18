@@ -1,10 +1,4 @@
-export interface IProductFilter {
-  category: string;
-  filter?: {
-    binding: keyof IProductList;
-    data: string[];
-  };
-}
+import { IProductFilter, IProductList } from "@/types/product";
 
 export const productCategoryWithFilters: IProductFilter[] = [
   {
@@ -44,22 +38,10 @@ export const productCategoryWithFilters: IProductFilter[] = [
   },
 ];
 
-export interface IProductList {
-  productId: number;
-  isNew: boolean;
-  theme: string;
-  image: string[];
-  productTemplate: string;
-  productPackage: string;
-  price: number;
-  discount?: number;
-  category: string;
-  portfolio: boolean;
-}
-
 export const productData: IProductList[] = [
   {
     productId: 1,
+    productSlug: "premium-b-em-1",
     isNew: true,
     theme: "Elegant & Minimalist",
     image: [
@@ -77,6 +59,7 @@ export const productData: IProductList[] = [
   },
   {
     productId: 2,
+    productSlug: "premium-b-em-1",
     isNew: false,
     theme: "Elegant & Minimalist",
     image: [
@@ -94,6 +77,7 @@ export const productData: IProductList[] = [
   },
   {
     productId: 3,
+    productSlug: "premium-b-em-1",
     isNew: false,
     theme: "Elegant & Minimalist",
     image: [
@@ -111,6 +95,7 @@ export const productData: IProductList[] = [
   },
   {
     productId: 4,
+    productSlug: "premium-b-em-1",
     isNew: false,
     theme: "Elegant & Minimalist",
     image: [
